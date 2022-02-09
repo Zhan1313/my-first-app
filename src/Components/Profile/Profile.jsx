@@ -1,15 +1,11 @@
 import MyPosts from './My Posts/MyPosts'
-import s from './Profile.module.css'
+import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
-const Profile = (props) => {
+
+const Profile = ({postsData}) => {
     return <div>
-    <div>
-      <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXypcPv6UTI2jfRH1eedMQjYoRexCMr0DVQQ&usqp=CAU'/>
-    </div>
-    <div>
-      ava + description
-    </div>
-    <MyPosts postsData={props.postsData}/>
+    <ProfileInfo/>
+    <MyPosts postsData={postsData}/>
     </div>
 }
 export default Profile;
