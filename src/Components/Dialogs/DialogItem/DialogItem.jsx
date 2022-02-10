@@ -10,5 +10,4 @@ const DialogItem = ({id, name}) => {
         </div>
     )
 }
-
 export default DialogItem;

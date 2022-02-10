@@ -15,12 +15,14 @@ const App = ({state}) => {
         <BrowserRouter>
             <div className='app-wrapper'>
                 <Header/>
-                <Navbar/>
+                <Navbar friendsData={state.sideBar.friendsData}/>
                 <div className='app-wrapper-content'>
                     <Route path='/dialogs'
-                           render={ () => <Dialogs dialogs={state.dialogs} messages={state.messages}/>}/>
+                           render={ () => <Dialogs
+                               dialogs={state.dialogsPage.dialogItems}
+                               messages={state.dialogsPage.messages}/>}/>
                     <Route path='/profile'
-                           render={ () => <Profile postsData={state.postsData}/>}/>
+                           render={ () => <Profile postsData={state.profilePage.postsData}/>}/>
                     <Route path='/news' component={News}/>
                     <Route path='/music' component={Music}/>
                     <Route path='/stories' component={Stories}/>
