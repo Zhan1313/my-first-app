@@ -1,7 +1,9 @@
-const Friend = ({name, id}) => {
+import s from './NavBarFriends.module.css'
+
+const Friend = ({name}) => {
     return (
         <div>
-            <div>
+            <div className={s.friendItem}>
                 <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTApbxj4499GJJWMYvKUVnzMUBJBt1b_Aob0A&usqp=CAU'/>
             </div>
             <div>

@@ -23,7 +23,6 @@ const Navbar = (props) => {
             <NavLink to='/settings'> Settings</NavLink>
         </div>
         <div>
-            <h3>FRIENDS</h3>
             <Friends friendsData={props.friendsData}/>
         </div>
     </nav>
