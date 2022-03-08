@@ -10,7 +10,7 @@ import Stories from "./Components/Stories/Stories";
 import Settings from "./Components/Settings/Settings";
 
 
-const App = ({state}) => {
+const App = ({state, addPost}) => {
     return (
         <BrowserRouter>
             <div className='app-wrapper'>
@@ -22,8 +22,8 @@ const App = ({state}) => {
                                dialogs={state.dialogsPage.dialogItems}
                                messages={state.dialogsPage.messages}/>}/>
                     <Route path='/profile'
-                           render={ () => <Profile postsData={state.profilePage.postsData}/>}/>
-                    <Route path='/news' component={News}/>
+                           render={ () => <Profile postsData={state.profilePage.postsData} addPost={addPost}/>}/>
+                    <Route path='/news' render={ () => <News/>}/>
                     <Route path='/music' component={Music}/>
                     <Route path='/stories' component={Stories}/>
                     <Route path='/settings' component={Settings}/>

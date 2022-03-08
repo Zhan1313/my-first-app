@@ -2,13 +2,14 @@ import s from './MyPosts.module.css'
 import Post from './Post/Post'
 import React from "react";
 
-const MyPosts = ({postsData}) => {
+const MyPosts = ({postsData,addPost}) => {
     let posts = postsData.map(p => <Post message={p.message} likesCount={p.likesCount}/>)
 
     let newPostElement = React.createRef();
-    let addPost = () => {
+    let addNewPost = () => {
+        debugger;
         let text = newPostElement.current.value;
-        alert(text);
+        addPost(text);
     }
     return (
         <div className={s.postsBlock}>
@@ -16,7 +17,7 @@ const MyPosts = ({postsData}) => {
             <div>
                 <textarea ref={newPostElement}></textarea>
                 <div>
-                    <button onClick={ addPost }>Add Post</button>
+                    <button onClick={ addNewPost }>Add Post</button>
                     <button>Remove Post</button>
                 </div>
             </div>
