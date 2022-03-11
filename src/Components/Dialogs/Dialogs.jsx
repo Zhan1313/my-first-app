@@ -1,22 +1,29 @@
-import s from './Dialogs.module.css'
+import s from './Dialogs.module.css';
+import React from 'react';
 import DialogItem from "./DialogItem/DialogItem";
 import DialogMessage from "./DialogMessage/DialogMessage";
 
-const Dialogs = ({dialogs, messages}) => {
-    let dialogItems = dialogs.map(el => <DialogItem name={el.name} id={el.id}/>)
-    let dialogMessages = messages.map(el => <DialogMessage message={el.message}/>)
-    let california = () => {
-        console.log('Letti')
+const Dialogs = ({dialogItems, dialogMessages, addDialogMessage, newDialogMessageChange, newDialogMessageText}) => {
+    let dialogsItems = dialogItems.map(el => <DialogItem name={el.name} id={el.id}/>)
+    let dialogsMessages = dialogMessages.map(el => <DialogMessage message={el.message}/>)
+    let onAddNewDialogsMessage = () => {
+        addDialogMessage()
     }
+    let newDialogMessageElement = React.createRef();
+    let onNewDialogMessageChange = () => {
+        let messageText = newDialogMessageElement.current.value;
+        newDialogMessageChange(messageText);
+    }
+
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
-                {dialogItems}
+                {dialogsItems}
             </div>
-            <div className={s.messages}>
-                {dialogMessages}
-                <textarea></textarea>
-                <button onClick={california}>Send</button>
+            <div className={s.dialogsMessages}>
+                {dialogsMessages}
+                <textarea ref={newDialogMessageElement} value={newDialogMessageText} onChange={onNewDialogMessageChange}/>
+                <button onClick={onAddNewDialogsMessage}>Send</button>
             </div>
         </div>
     )

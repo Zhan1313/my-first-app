@@ -1,4 +1,4 @@
-import state, {subscribe} from './Redux/state';
+import state, {addNewDialogsMessage, subscribe, updateNewDialogMessageText} from './Redux/state';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -9,7 +9,8 @@ import {addNewPost, updateNewPostText} from "./Redux/state";
 let rerenderEntireTree = (state) => {
     ReactDOM.render(
         <React.StrictMode>
-            <App state={state} addPost={addNewPost} newPostChange={updateNewPostText}/>
+            <App state={state} addPost={addNewPost} newPostChange={updateNewPostText}
+                 addDialogMessage={addNewDialogsMessage} newDialogMessageChange={updateNewDialogMessageText}/>
         </React.StrictMode>,
         document.getElementById('root')
     );

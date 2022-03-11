@@ -17,12 +17,13 @@ let state = {
             {name: 'Yerlan', id: '3'},
             {name: 'Aidos', id: '4'}
         ],
-        messages: [
-            {id: '1', message: 'Hi'},
-            {id: '2', message: 'Whats up?'},
-            {id: '3', message: 'Where are u mate?'},
-            {id: '4', message: 'Nice to see ya here!'}
-        ]
+        dialogMessages: [
+            {id: 1, message: 'Hi'},
+            {id: 2, message: 'Whats up?'},
+            {id: 3, message: 'Where are u mate?'},
+            {id: 4, message: 'Nice to see ya here!'}
+        ],
+        newDialogsMessageText: ''
     },
     sideBar: {
         friendsData: [
@@ -46,9 +47,22 @@ export const addNewPost = () => {
     state.profilePage.newPostText = '';
     rerenderEntireTree(state)
 }
+export const addNewDialogsMessage = () => {
+    let newDialogMessage = {
+        id: 5,
+        message: state.dialogsPage.newDialogsMessageText
+    };
+    state.dialogsPage.dialogMessages.push(newDialogMessage);
+    state.dialogsPage.newDialogsMessageText = '';
+    rerenderEntireTree(state)
+}
 
 export const updateNewPostText = (newText) => {
     state.profilePage.newPostText = newText;
+    rerenderEntireTree(state)
+}
+export const updateNewDialogMessageText = (messageText) => {
+    state.dialogsPage.newDialogsMessageText = messageText;
     rerenderEntireTree(state)
 }
 

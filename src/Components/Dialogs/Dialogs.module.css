@@ -3,9 +3,9 @@
     grid-template-columns: 2fr 10fr;
 }
 .dialogsItems {
-    padding: 10px;
+    padding: 20px;
 }
-.messages {
+.dialogsMessages {
     padding: 10px;
 }
 .message {
