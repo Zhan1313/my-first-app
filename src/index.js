@@ -1,22 +1,23 @@
-import state, {addNewDialogsMessage, subscribe, updateNewDialogMessageText} from './Redux/state';
+import store from './Redux/state';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {addNewPost, updateNewPostText} from "./Redux/state";
 
 let rerenderEntireTree = (state) => {
     ReactDOM.render(
         <React.StrictMode>
-            <App state={state} addPost={addNewPost} newPostChange={updateNewPostText}
-                 addDialogMessage={addNewDialogsMessage} newDialogMessageChange={updateNewDialogMessageText}/>
+            <App state={state} addPost={store.addNewPost.bind(store)}
+                 newPostChange={store.updateNewPostText.bind(store)}
+                 addDialogMessage={store.addNewDialogsMessage.bind(store)}
+                 newDialogMessageChange={store.updateNewDialogMessageText.bind(store)}/>
         </React.StrictMode>,
         document.getElementById('root')
     );
 }
-rerenderEntireTree(state);
-subscribe(rerenderEntireTree);
+rerenderEntireTree(store.getState());
+store.subscribe(rerenderEntireTree);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
