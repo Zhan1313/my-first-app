@@ -2,16 +2,17 @@ import s from './MyPosts.module.css'
 import Post from './Post/Post'
 import React from "react";
 
-const MyPosts = ({postsData,addPost, newPostText, newPostChange}) => {
+const MyPosts = ({postsData,dispatch, newPostText}) => {
     let posts = postsData.map(p => <Post message={p.message} likesCount={p.likesCount}/>)
 
     let newPostElement = React.createRef();
     let addNewPost = () => {
-        addPost();
+        dispatch({type: 'ADD-POST'});
     }
     let onNewPostChange = () => {
         let text = newPostElement.current.value;
-        newPostChange(text);
+        let action = {type: 'UPDATE-POST-TEXT', newText: text};
+        dispatch(action);
     }
     return (
         <div className={s.postsBlock}>
