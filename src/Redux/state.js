@@ -1,7 +1,7 @@
-const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
-const ADD_DIALOGS_MESSAGE = 'ADD-DIALOGS-MESSAGE';
-const UPDATE_NEW_DIALOGS_MESSAGE_TEXT = 'UPDATE-NEW-DIALOGS-MESSAGE-TEXT';
+const ADD_POST = 'ADD_POST';
+const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
+const SEND_DIALOGS_MESSAGE = 'SEND_DIALOGS_MESSAGE';
+const UPDATE_NEW_DIALOGS_MESSAGE_TEXT = 'UPDATE_NEW_DIALOGS_MESSAGE_TEXT';
 
 let store = {
     _state: {
@@ -74,7 +74,7 @@ let store = {
         } else if (action.type === UPDATE_NEW_POST_TEXT) {
             this._state.profilePage.newPostText = action.newText;
             this._callSubscriber(this._state);
-        } else if (action.type === ADD_DIALOGS_MESSAGE) {
+        } else if (action.type === SEND_DIALOGS_MESSAGE) {
             this._addNewDialogsMessage();
         } else if (action.type === UPDATE_NEW_DIALOGS_MESSAGE_TEXT) {
             this._updateNewDialogMessageText(action.newMessageText);
@@ -85,11 +85,9 @@ let store = {
 export const addPostActionCreator = () => ({type: ADD_POST});
 export const updateNewPostTextActionCreator = (text) => ({type: UPDATE_NEW_POST_TEXT, newText :text});
 
-export const addDialogsMessageActionCreator = () => ({type: ADD_DIALOGS_MESSAGE});
+export const sendDialogsMessageActionCreator = () => ({type: SEND_DIALOGS_MESSAGE});
 export const updateNewDialogMessageTextActionCreator = (text) =>
     ({type: UPDATE_NEW_DIALOGS_MESSAGE_TEXT, newMessageText :text});
-
-
 
 window.store = store;
 export default store;

@@ -1,4 +1,5 @@
 import s from './NavBarFriends.module.css'
+import {NavLink} from "react-router-dom";
 
 const Friend = ({name}) => {
     return (
