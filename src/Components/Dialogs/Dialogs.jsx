@@ -3,16 +3,16 @@ import React from 'react';
 import DialogItem from "./DialogItem/DialogItem";
 import DialogMessage from "./DialogMessage/DialogMessage";
 
-const Dialogs = ({dialogItems, dialogMessages, addDialogMessage, newDialogMessageChange, newDialogMessageText}) => {
+const Dialogs = ({dialogItems, dialogMessages, dispatch, newDialogMessageText}) => {
     let dialogsItems = dialogItems.map(el => <DialogItem name={el.name} id={el.id}/>)
     let dialogsMessages = dialogMessages.map(el => <DialogMessage message={el.message}/>)
     let onAddNewDialogsMessage = () => {
-        addDialogMessage()
+        dispatch({type: 'ADD-DIALOGS-MESSAGE'})
     }
     let newDialogMessageElement = React.createRef();
     let onNewDialogMessageChange = () => {
         let messageText = newDialogMessageElement.current.value;
-        newDialogMessageChange(messageText);
+        dispatch({type: 'UPDATE-DIALOGS-MESSAGE-TEXT', newMessageText: messageText});
     }
 
     return (

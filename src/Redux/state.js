@@ -42,7 +42,7 @@ let store = {
         this._callSubscriber = observer;
     },
 
-    addNewPost() {
+    /*addNewPost() {
         let newPost = {
             id: 3,
             message: this._state.profilePage.newPostText,
@@ -51,13 +51,13 @@ let store = {
         this._state.profilePage.postsData.push(newPost)
         this._state.profilePage.newPostText = '';
         this._callSubscriber(this._state)
-    },
-    updateNewPostText(newText) {
+    },*/
+    /*updateNewPostText(newText) {
         this._state.profilePage.newPostText = newText;
         this._callSubscriber(this._state)
-    },
+    },*/
 
-    addNewDialogsMessage() {
+    _addNewDialogsMessage() {
         let newDialogMessage = {
             id: 5,
             message: this._state.dialogsPage.newDialogsMessageText
@@ -66,7 +66,7 @@ let store = {
         this._state.dialogsPage.newDialogsMessageText = '';
         this._callSubscriber(this._state)
     },
-    updateNewDialogMessageText(messageText) {
+    _updateNewDialogMessageText(messageText) {
         this._state.dialogsPage.newDialogsMessageText = messageText;
         this._callSubscriber(this._state)
     },
@@ -77,13 +77,17 @@ let store = {
                 id: 3,
                 message: this._state.profilePage.newPostText,
                 likesCount: 0
-            }
-            this._state.profilePage.postsData.push(newPost)
+            };
+            this._state.profilePage.postsData.push(newPost);
             this._state.profilePage.newPostText = '';
-            this._callSubscriber(this._state)
+            this._callSubscriber(this._state);
         } else if (action.type === 'UPDATE-POST-TEXT') {
             this._state.profilePage.newPostText = action.newText;
-            this._callSubscriber(this._state)
+            this._callSubscriber(this._state);
+        } else if (action.type === 'ADD-DIALOGS-MESSAGE') {
+            this._addNewDialogsMessage();
+        } else if (action.type === 'UPDATE-DIALOGS-MESSAGE-TEXT') {
+            this._updateNewDialogMessageText(action.newMessageText);
         }
     }
 }

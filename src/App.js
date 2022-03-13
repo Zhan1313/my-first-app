@@ -10,7 +10,7 @@ import Stories from "./Components/Stories/Stories";
 import Settings from "./Components/Settings/Settings";
 
 
-const App = ({state, dispatch, addDialogMessage, newDialogMessageChange}) => {
+const App = ({state, dispatch}) => {
     return (
         <BrowserRouter>
             <div className='app-wrapper'>
@@ -21,8 +21,7 @@ const App = ({state, dispatch, addDialogMessage, newDialogMessageChange}) => {
                            render={ () => <Dialogs
                                dialogItems={state.dialogsPage.dialogItems}
                                dialogMessages={state.dialogsPage.dialogMessages}
-                               addDialogMessage={addDialogMessage}
-                               newDialogMessageChange={newDialogMessageChange}
+                               dispatch={dispatch}
                                newDialogMessageText={state.dialogsPage.newDialogsMessageText}/>}/>
                     <Route path='/profile'
                            render={ () => <Profile
