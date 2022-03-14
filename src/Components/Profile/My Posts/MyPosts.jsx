@@ -1,7 +1,7 @@
 import s from './MyPosts.module.css'
 import Post from './Post/Post'
 import React from "react";
-import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../Redux/state";
+import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../Redux/profile-reducer";
 
 const MyPosts = ({postsData,dispatch, newPostText}) => {
     let posts = postsData.map(p => <Post message={p.message} likesCount={p.likesCount}/>)

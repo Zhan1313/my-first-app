@@ -1,7 +1,6 @@
-const ADD_POST = 'ADD_POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
-const SEND_DIALOGS_MESSAGE = 'SEND_DIALOGS_MESSAGE';
-const UPDATE_NEW_DIALOGS_MESSAGE_TEXT = 'UPDATE_NEW_DIALOGS_MESSAGE_TEXT';
+import profileReducer from "./profile-reducer";
+import dialogsReducer from "./dialogs-reducer";
+import sidebarReducer from "./sidebar-reducer";
 
 let store = {
     _state: {
@@ -47,47 +46,13 @@ let store = {
         this._callSubscriber = observer;
     },
 
-    _addNewDialogsMessage() {
-        let newDialogMessage = {
-            id: 5,
-            message: this._state.dialogsPage.newDialogsMessageText
-        };
-        this._state.dialogsPage.dialogMessages.push(newDialogMessage);
-        this._state.dialogsPage.newDialogsMessageText = '';
-        this._callSubscriber(this._state)
-    },
-    _updateNewDialogMessageText(messageText) {
-        this._state.dialogsPage.newDialogsMessageText = messageText;
-        this._callSubscriber(this._state)
-    },
-
     dispatch(action) {
-        if (action.type === ADD_POST) {
-            let newPost = {
-                id: 3,
-                message: this._state.profilePage.newPostText,
-                likesCount: 0
-            };
-            this._state.profilePage.postsData.push(newPost);
-            this._state.profilePage.newPostText = '';
-            this._callSubscriber(this._state);
-        } else if (action.type === UPDATE_NEW_POST_TEXT) {
-            this._state.profilePage.newPostText = action.newText;
-            this._callSubscriber(this._state);
-        } else if (action.type === SEND_DIALOGS_MESSAGE) {
-            this._addNewDialogsMessage();
-        } else if (action.type === UPDATE_NEW_DIALOGS_MESSAGE_TEXT) {
-            this._updateNewDialogMessageText(action.newMessageText);
-        }
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+        this._state.sideBar = sidebarReducer(this._state.sideBar, action);
+        this._callSubscriber(this._state)
     }
 };
-
-export const addPostActionCreator = () => ({type: ADD_POST});
-export const updateNewPostTextActionCreator = (text) => ({type: UPDATE_NEW_POST_TEXT, newText :text});
-
-export const sendDialogsMessageActionCreator = () => ({type: SEND_DIALOGS_MESSAGE});
-export const updateNewDialogMessageTextActionCreator = (text) =>
-    ({type: UPDATE_NEW_DIALOGS_MESSAGE_TEXT, newMessageText :text});
 
 window.store = store;
 export default store;
