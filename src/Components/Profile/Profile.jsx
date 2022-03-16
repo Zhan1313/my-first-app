@@ -1,12 +1,14 @@
-import MyPosts from './My Posts/MyPosts'
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
+import MyPostsContainer from "./My Posts/MyPostsContainer";
 
 
-const Profile = ({postsData, dispatch, newPostText}) => {
+const Profile = ({store, dispatch}) => {
+    let state = store.getState();
+
     return <div>
     <ProfileInfo/>
-    <MyPosts postsData={postsData} dispatch={dispatch}
-             newPostText={newPostText} />
+    <MyPostsContainer postsData={state.profilePage.postsData} dispatch={dispatch}
+             newPostText={state.profilePage.newPostText} />
     </div>
 }
 export default Profile;

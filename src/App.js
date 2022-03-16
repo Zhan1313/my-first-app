@@ -8,9 +8,10 @@ import News from "./Components/News/News";
 import Music from "./Components/Music/Music";
 import Stories from "./Components/Stories/Stories";
 import Settings from "./Components/Settings/Settings";
+import DialogsContainer from "./Components/Dialogs/DialogsContainer";
 
 
-const App = ({state, dispatch}) => {
+const App = ({state, dispatch, store}) => {
     return (
         <BrowserRouter>
             <div className='app-wrapper'>
@@ -18,16 +19,13 @@ const App = ({state, dispatch}) => {
                 <Navbar friendsData={state.sideBar.friendsData}/>
                 <div className='app-wrapper-content'>
                     <Route path='/dialogs'
-                           render={ () => <Dialogs
-                               dialogItems={state.dialogsPage.dialogItems}
-                               dialogMessages={state.dialogsPage.dialogMessages}
-                               dispatch={dispatch}
-                               newDialogMessageText={state.dialogsPage.newDialogsMessageText}/>}/>
+                           render={ () => <DialogsContainer
+                               store={store}
+                               dispatch={dispatch}/>}/>
                     <Route path='/profile'
                            render={ () => <Profile
-                               postsData={state.profilePage.postsData}
-                               dispatch={dispatch}
-                               newPostText={state.profilePage.newPostText} />}/>
+                               store={store}
+                               dispatch={dispatch}/>}/>
                     <Route path='/news' render={ () => <News/>}/>
                     <Route path='/music' component={Music}/>
                     <Route path='/stories' component={Stories}/>
