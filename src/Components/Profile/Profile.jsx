@@ -2,13 +2,10 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import MyPostsContainer from "./My Posts/MyPostsContainer";
 
 
-const Profile = ({store, dispatch}) => {
-    let state = store.getState();
-
+const Profile = () => {
     return <div>
-    <ProfileInfo/>
-    <MyPostsContainer postsData={state.profilePage.postsData} dispatch={dispatch}
-             newPostText={state.profilePage.newPostText} />
+        <ProfileInfo/>
+        <MyPostsContainer/>
     </div>
 }
 export default Profile;
