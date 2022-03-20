@@ -3,10 +3,7 @@ import React from 'react';
 import DialogItem from "./DialogItem/DialogItem";
 import DialogMessage from "./DialogMessage/DialogMessage";
 
-const Dialogs = ({
-                     dialogItems, dialogMessages, onNewDialogMessageChange,
-                     onSendNewDialogsMessage, newDialogMessageText
-                 }) => {
+const Dialogs = ({dialogItems, dialogMessages, onNewDialogMessageChange, onSendNewDialogsMessage, newDialogMessageText}) => {
     let dialogsItems = dialogItems.map(el => <DialogItem name={el.name} id={el.id}/>)
     let dialogsMessages = dialogMessages.map(el => <DialogMessage message={el.message}/>)
 
