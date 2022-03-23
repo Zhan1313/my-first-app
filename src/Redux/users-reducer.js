@@ -22,14 +22,12 @@ let initialState = {
 const usersReducer = (state = initialState, action) => {
     switch (action.type) {
         case FOLLOW:
-            let newDialogMessage = {
-                id: 5,
-                message: state.newDialogsMessageText
-            };
             return {
                 ...state,
-                dialogMessages: [...state.dialogMessages, newDialogMessage],
-                newDialogsMessageText: ''
+                users: state.users.map(user => {
+                    if ()
+                    return
+                })
             };
         case UNFOLLOW:
             return {
@@ -38,7 +36,7 @@ const usersReducer = (state = initialState, action) => {
             };
         case SET_USERS:
             return {
-
+                ...state
             }
         default:
             return state;

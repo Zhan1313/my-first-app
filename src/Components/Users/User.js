@@ -8,7 +8,10 @@ const User = (props) => {
                     <img src={props.avatarUrl}/>
                 </div>
                 <div>
-                    <button onClick={() => {alert('followed')}}>Follow</button>
+                    {
+                     props.followed ? <button onClick={() => {props.unfollow(props.userId)}}>Unfollow</button>
+                         : <button onClick={() => {props.follow(props.userId)}}>Follow</button>
+                    }
                 </div>
             </span>
             <span>
