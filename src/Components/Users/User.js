@@ -9,8 +9,12 @@ const User = (props) => {
                 </div>
                 <div>
                     {
-                     props.followed ? <button onClick={() => {props.unfollow(props.userId)}}>Unfollow</button>
-                         : <button onClick={() => {props.follow(props.userId)}}>Follow</button>
+                        props.followed ? <button onClick={() => {
+                                props.unfollow(props.userId)
+                            }}>Unfollow</button>
+                            : <button onClick={() => {
+                                props.follow(props.userId)
+                            }}>Follow</button>
                     }
                 </div>
             </span>

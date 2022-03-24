@@ -25,19 +25,26 @@ const usersReducer = (state = initialState, action) => {
             return {
                 ...state,
                 users: state.users.map(user => {
-                    if ()
-                    return
+                    if (user.id === action.userId) {
+                        return {
+                            ...user, followed: true
+                        }
+                    }
+                    return user;
                 })
             };
         case UNFOLLOW:
             return {
                 ...state,
-                newDialogsMessageText: action.newMessageText
+                users: state.users.map(user => {
+                    if (user.id === action.userId) {
+                        return {
+                            ...user, followed: false
+                        }
+                    }
+                    return user;
+                })
             };
-        case SET_USERS:
-            return {
-                ...state
-            }
         default:
             return state;
     }
