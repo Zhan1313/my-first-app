@@ -1,11 +1,12 @@
 import React from "react";
+import styles from './User.module.css'
 
 const User = (props) => {
     return (
         <div>
             <span>
                 <div>
-                    <img src={props.avatarUrl}/>
+                    <img src={props.avatarUrl} className={styles.avatarPhoto}/>
                 </div>
                 <div>
                     {
