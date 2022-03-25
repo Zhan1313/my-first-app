@@ -1,12 +1,13 @@
 import React from "react";
-import styles from './User.module.css'
+import styles from './User.module.css';
+import avatarPicture from '../../Assets/avatarPicture.jpg';
 
 const User = (props) => {
     return (
         <div>
             <span>
                 <div>
-                    <img src={props.avatarUrl} className={styles.avatarPhoto}/>
+                    <img src={ props.photos != null ? props.photos : avatarPicture} className={styles.avatarPhoto}/>
                 </div>
                 <div>
                     {
@@ -22,7 +23,7 @@ const User = (props) => {
             <span>
                 <span>
                     <div>
-                        {props.fullName}
+                        {props.name}
                     </div>
                     <div>
                         {props.status}
@@ -30,10 +31,10 @@ const User = (props) => {
                 </span>
                 <span>
                     <div>
-                        {props.location.country}
+                        {'props.location.country'}
                     </div>
                     <div>
-                        {props.location.city}
+                        {'props.location.city'}
                     </div>
                 </span>
             </span>
