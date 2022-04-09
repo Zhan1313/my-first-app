@@ -6,11 +6,17 @@ import styles from "./User.module.css";
 class Users extends React.Component {
 
     componentDidMount() {
-        axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
+        axios.get('https://social-network.samuraijs.com/api/1.0/users')
+            .then(response => {
             this.props.setUsers(response.data.items);
         });
     }
-
+    onPageChanged = () => {
+        axios.get('https://social-network.samuraijs.com/api/1.0/users')
+            .then(response => {
+                this.props.setUsers(response.data.items);
+            });
+    }
 
     render() {
         let pagesCount = Math.ceil(this.props.totalUsersCount/this.props.pageSize);
@@ -27,7 +33,8 @@ class Users extends React.Component {
             <div>
                 <div>
                     {pages.map(pageNumber => {
-                        return <span className={this.props.currentPage === pageNumber && styles.selectedPage}>
+                        return <span
+                                     className={this.props.currentPage === pageNumber && styles.selectedPage}>
                             {pageNumber}</span>
                     })}
                 </div>
