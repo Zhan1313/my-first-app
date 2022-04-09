@@ -11,7 +11,8 @@ class Users extends React.Component {
             this.props.setUsers(response.data.items);
         });
     }
-    onPageChanged = () => {
+    onPageChanged = (page) => {
+        this.props.setCurrentPage(page);
         axios.get('https://social-network.samuraijs.com/api/1.0/users')
             .then(response => {
                 this.props.setUsers(response.data.items);
@@ -33,7 +34,7 @@ class Users extends React.Component {
             <div>
                 <div>
                     {pages.map(pageNumber => {
-                        return <span
+                        return <span onClick={(e) => {this.onPageChanged(pageNumber)}}
                                      className={this.props.currentPage === pageNumber && styles.selectedPage}>
                             {pageNumber}</span>
                     })}
