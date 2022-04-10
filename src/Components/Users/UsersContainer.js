@@ -1,7 +1,7 @@
 import React from "react";
 import Users from "./Users";
 import {connect} from "react-redux";
-import {followAC, setCurrentPageAC, setUsersAC, unfollowAC} from "../../Redux/users-reducer";
+import {followAC, setCurrentPageAC, setTotalUsersCountAC, setUsersAC, unfollowAC} from "../../Redux/users-reducer";
 
 const mapStateToProps = (state) => {
     return {
@@ -24,6 +24,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         setCurrentPage: (page) => {
             dispatch(setCurrentPageAC(page))
+        },
+        setTotalUsersCount: (totalCount) => {
+            dispatch(setTotalUsersCountAC(totalCount))
         }
     }
 }
