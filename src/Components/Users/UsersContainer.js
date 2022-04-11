@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import {followAC, setCurrentPageAC, setTotalUsersCountAC, setUsersAC, unfollowAC} from "../../Redux/users-reducer";
-import UsersAPIContainer from "./Users";
+import UsersAPIContainer from "./UsersAPIContainer";
 
 const mapStateToProps = (state) => {
     return {
