@@ -3,7 +3,7 @@ import User from "./User";
 import axios from "axios";
 import styles from "./User.module.css";
 
-class Users extends React.Component {
+class UsersAPIContainer extends React.Component {
 
     componentDidMount() {
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
@@ -46,4 +46,4 @@ class Users extends React.Component {
     }
 }
 
-export default Users;
+export default UsersAPIContainer;
