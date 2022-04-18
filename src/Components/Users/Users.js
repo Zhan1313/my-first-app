@@ -1,7 +1,6 @@
 import React from "react";
 import User from "./User";
 import styles from "./User.module.css";
-import Preloader from "../Common/Preloader/Preloader";
 
 const Users = (props) => {
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
@@ -15,23 +14,20 @@ const Users = (props) => {
                                              status={user.status} location={user.location}
                                              follow={props.follow} unfollow={props.unfollow}/>);
     return (
-        <>
-            {props.isFetching && <Preloader/>}
+        <div>
             <div>
-                <div>
-                    {pages.map(pageNumber => {
-                        return <span onClick={(e) => {
-                            props.onPageChanged(pageNumber)
-                        }}
-                                     className={props.currentPage === pageNumber && styles.selectedPage}>
+                {pages.map(pageNumber => {
+                    return <span onClick={(e) => {
+                        props.onPageChanged(pageNumber)
+                    }}
+                                 className={props.currentPage === pageNumber && styles.selectedPage}>
                             {pageNumber}</span>
-                    })}
-                </div>
-                <div>
-                    {user}
-                </div>
+                })}
             </div>
-        </>
+            <div>
+                {user}
+            </div>
+        </div>
     )
 }
 export default Users;
