@@ -16,7 +16,7 @@ const Users = (props) => {
                                              follow={props.follow} unfollow={props.unfollow}/>);
     return (
         <>
-            <Preloader />
+            {props.isFetching && <Preloader/>}
             <div>
                 <div>
                     {pages.map(pageNumber => {
