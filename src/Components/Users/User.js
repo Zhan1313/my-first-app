@@ -1,13 +1,16 @@
 import React from "react";
 import styles from './User.module.css';
 import avatarPicture from '../../Assets/images/avatarPicture.png';
+import {NavLink} from "react-router-dom";
 
 const User = (props) => {
     return (
         <div>
             <span>
                 <div>
-                    <img src={ props.photos != null ? props.photos : avatarPicture} className={styles.avatarPhoto}/>
+                    <NavLink to='profile/userid'>
+                        <img src={props.photos != null ? props.photos : avatarPicture} className={styles.avatarPhoto}/>
+                    </NavLink>
                 </div>
                 <div>
                     {
