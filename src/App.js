@@ -9,6 +9,7 @@ import Stories from "./Components/Stories/Stories";
 import Settings from "./Components/Settings/Settings";
 import DialogsContainer from "./Components/Dialogs/DialogsContainer";
 import UsersContainer from "./Components/Users/UsersContainer";
+import ProfileContainer from "./Components/Profile/ProfileContainer";
 
 const App = () => {
     return (
@@ -19,7 +20,7 @@ const App = () => {
                 <Route path='/dialogs'
                        render={() => <DialogsContainer />}/>
                 <Route path='/profile'
-                       render={() => <Profile />}/>
+                       render={() => <ProfileContainer />}/>
                 <Route path='/news' render={() => <News/>}/>
                 <Route path='/music' render={() => <Music/>}/>
                 <Route path='/stories' render={ () => <Stories/>}/>
