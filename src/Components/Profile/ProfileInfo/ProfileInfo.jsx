@@ -13,13 +13,13 @@ const ProfileInfo = (props) => {
                 src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8elXVuXaPtlBNW136vDKrASrUUZMdbJM9jA&usqp=CAU'/>
         </div>
         <div>
-            <div>
+            <div className={s.fullName}>
                 {props.profile.fullName}
             </div>
             <div>
                 <img src={props.profile.photos.large}/>
             </div>
-            <div>
+            <div className={s.aboutMe}>
                 {props.profile.aboutMe}
             </div>
             <div>
@@ -35,20 +35,20 @@ const ProfileInfo = (props) => {
                 </div>
                 <div>
                     <div>
-                        <span className={s.contacts}>facebook:{props.profile.contacts.facebook}</span>
-                        <span className={s.contacts}>website{props.profile.contacts.website}</span>
+                        <span className={s.contacts}>facebook:    {props.profile.contacts.facebook}</span>
+                        <span className={s.contacts}>website:     {props.profile.contacts.website}</span>
                     </div>
                     <div>
-                        <span className={s.contacts}>vk{props.profile.contacts.vk}</span>
-                        <span className={s.contacts}>twitter{props.profile.contacts.twitter}</span>
+                        <span className={s.contacts}>vk:          {props.profile.contacts.vk}</span>
+                        <span className={s.contacts}>twitter:     {props.profile.contacts.twitter}</span>
                     </div>
                     <div>
-                        <span className={s.contacts}>instagram{props.profile.contacts.instagram}</span>
-                        <span className={s.contacts}>youtube{props.profile.contacts.youtube}</span>
+                        <span className={s.contacts}>instagram:    {props.profile.contacts.instagram}</span>
+                        <span className={s.contacts}>youtube:      {props.profile.contacts.youtube}</span>
                     </div>
                     <div>
-                        <span className={s.contacts}>github{props.profile.contacts.github}</span>
-                        <span className={s.contacts}>mainLink{props.profile.contacts.mainLink}</span>
+                        <span className={s.contacts}>github:       {props.profile.contacts.github}</span>
+                        <span className={s.contacts}>mainLink:     {props.profile.contacts.mainLink}</span>
                     </div>
                 </div>
             </div>

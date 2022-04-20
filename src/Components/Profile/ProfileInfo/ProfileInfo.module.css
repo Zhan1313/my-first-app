@@ -7,3 +7,10 @@
 contactsItems {
     margin-right: 20px;
 }
+.fullName {
+    font-weight: bold;
+    font-size: 20px;
+}
+.aboutMe {
+    font-weight: bold;
+}
