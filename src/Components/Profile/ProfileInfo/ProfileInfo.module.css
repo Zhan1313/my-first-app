@@ -1,3 +1,9 @@
 .profilePicture {
     border-radius: 100px;
 }
+.contacts {
+    padding: 20px;
+}
+contactsItems {
+    margin-right: 20px;
+}

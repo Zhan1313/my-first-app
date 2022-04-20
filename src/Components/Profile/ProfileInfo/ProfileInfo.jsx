@@ -1,7 +1,7 @@
-import s from './ProfileInfo.module.css'
+import s from './ProfileInfo.module.css';
 import Preloader from "../../Common/Preloader/Preloader";
-import LookingForJob from '../../../Assets/images/lookingForAJob.png'
-import NotLookingForJob from '../../../Assets/images/notLookingForAJob.jpg'
+import LookingForJob from '../../../Assets/images/lookingForAJob.png';
+import NotLookingForJob from '../../../Assets/images/notLookingForAJob.jpg';
 
 const ProfileInfo = (props) => {
     if (!props.profile) {
@@ -29,7 +29,29 @@ const ProfileInfo = (props) => {
             <div>
                 {props.profile.lookingForAJobDescription}
             </div>
-
+            <div>
+                <div>
+                    <p>You can reach me at</p>
+                </div>
+                <div>
+                    <div>
+                        <span className={s.contacts}>facebook:{props.profile.contacts.facebook}</span>
+                        <span className={s.contacts}>website{props.profile.contacts.website}</span>
+                    </div>
+                    <div>
+                        <span className={s.contacts}>vk{props.profile.contacts.vk}</span>
+                        <span className={s.contacts}>twitter{props.profile.contacts.twitter}</span>
+                    </div>
+                    <div>
+                        <span className={s.contacts}>instagram{props.profile.contacts.instagram}</span>
+                        <span className={s.contacts}>youtube{props.profile.contacts.youtube}</span>
+                    </div>
+                    <div>
+                        <span>github{props.profile.contacts.github}</span>
+                        <span>mainLink{props.profile.contacts.mainLink}</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 }
