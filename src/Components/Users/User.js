@@ -8,7 +8,7 @@ const User = (props) => {
         <div>
             <span>
                 <div>
-                    <NavLink to='profile/userid'>
+                    <NavLink to={'profile/' + props.userId}>
                         <img src={props.photos != null ? props.photos : avatarPicture} className={styles.avatarPhoto}/>
                     </NavLink>
                 </div>
