@@ -47,8 +47,8 @@ const ProfileInfo = (props) => {
                         <span className={s.contacts}>youtube{props.profile.contacts.youtube}</span>
                     </div>
                     <div>
-                        <span>github{props.profile.contacts.github}</span>
-                        <span>mainLink{props.profile.contacts.mainLink}</span>
+                        <span className={s.contacts}>github{props.profile.contacts.github}</span>
+                        <span className={s.contacts}>mainLink{props.profile.contacts.mainLink}</span>
                     </div>
                 </div>
             </div>
