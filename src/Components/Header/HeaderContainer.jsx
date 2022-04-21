@@ -10,9 +10,8 @@ class HeaderContainer extends React.Component {
             withCredentials: true
         })
             .then(response => {
-                debugger;
-                let {id, email, login} = response.data.data
-                this.props.setUserAuthData({id, email, login});
+                let {id, email, login} = response.data.data;
+                this.props.setUserAuthData(id, email, login);
             });
     }
 
@@ -21,6 +20,9 @@ class HeaderContainer extends React.Component {
     }
 }
 
-let mapStateToProps = (state) => ({});
+let mapStateToProps = (state) => ({
+    isAuth: state.auth.isAuth,
+    login: state.auth.login
+});
 
 export default connect(mapStateToProps, {setUserAuthData})(HeaderContainer);
