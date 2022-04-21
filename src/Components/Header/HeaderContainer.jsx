@@ -5,9 +5,9 @@ import axios from "axios";
 
 class HeaderContainer extends React.Component {
     componentDidMount() {
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/` + userId)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`)
             .then(response => {
-                this.props.setUserProfile(response.data);
+                this.props.setUserAuthData(response.data);
             });
     }
 
