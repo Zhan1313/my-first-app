@@ -2,6 +2,7 @@ import React from "react";
 import styles from './User.module.css';
 import avatarPicture from '../../Assets/images/avatarPicture.png';
 import {NavLink} from "react-router-dom";
+import axios from "axios";
 
 const User = (props) => {
     return (
@@ -15,10 +16,20 @@ const User = (props) => {
                 <div>
                     {
                         props.followed ? <button onClick={() => {
+
                                 props.unfollow(props.userId)
                             }}>Unfollow</button>
                             : <button onClick={() => {
-                                props.follow(props.userId)
+                                axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${props.userId}`, {}, {
+                                    withCredentials: true
+                                })
+                                    .then(response => {
+                                        debugger;
+                                        if (response.data.resultCode === 0) {
+                                            props.follow(props.userId)
+                                        }
+
+                                    })
                             }}>Follow</button>
                     }
                 </div>
