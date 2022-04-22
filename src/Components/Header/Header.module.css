@@ -8,3 +8,6 @@
 .loginBlock {
   float: right;
 }
+.loginBlock img {
+  padding-right: 100px;
+}
