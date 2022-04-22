@@ -3,7 +3,7 @@ import Post from './Post/Post'
 import React from "react";
 
 const MyPosts = ({postsData,onNewPostChange, addNewPost, newPostText}) => {
-    let posts = postsData.map(p => <Post message={p.message} likesCount={p.likesCount}/>)
+    let posts = postsData.map(p => <Post key={p.id} message={p.message} likesCount={p.likesCount}/>)
 
     let onAddNewPost = () => {
         addNewPost();
