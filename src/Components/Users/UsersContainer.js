@@ -10,13 +10,13 @@ import {
 } from "../../Redux/users-reducer";
 import Users from "./Users";
 import Preloader from "../Common/Preloader/Preloader";
-import {getUsers} from "../../API/api";
+import {UsersAPI} from "../../API/api";
 
 class UsersContainer extends React.Component {
 
     componentDidMount() {
         this.props.setIsFetching(true);
-        getUsers(this.props.currentPage, this.props.pageSize)
+        UsersAPI.getUsers(this.props.currentPage, this.props.pageSize)
             .then(data => {
                 this.props.setUsers(data.items);
                 this.props.setTotalUsersCount(data.totalCount);
@@ -27,7 +27,7 @@ class UsersContainer extends React.Component {
     onPageChanged = (page) => {
         this.props.setIsFetching(true);
         this.props.setCurrentPage(page);
-        getUsers(page, this.props.pageSize)
+        UsersAPI.getUsers(page, this.props.pageSize)
             .then(data => {
                 this.props.setUsers(data.items);
                 this.props.setIsFetching(false);
