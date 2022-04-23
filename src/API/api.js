@@ -8,15 +8,16 @@ const instance = axios.create({
     baseURL: `https://social-network.samuraijs.com/api/1.0/`
 });
 
-export const UsersAPI = {
+export const usersAPI = {
     getUsers(currentPage = 1, pageSize = 10) {
         return instance.get(`users?page=${currentPage}&count=${pageSize}`).then(response => response.data);
     }
 }
-export const AuthAPI = {
+export const authAPI = {
     getUserAuthData() {
         return instance.get(`auth/me`).then(response => response.data);
+    },
+    getAuthProfile(id) {
+        return instance.get(`profile${id}`).then(response => response.data);
     }
 }
-
-
