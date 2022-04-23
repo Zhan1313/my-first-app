@@ -10,8 +10,7 @@ class HeaderContainer extends React.Component {
             if (data.resultCode === 0) {
                 let {id, email, login} = data.data;
                 this.props.setUserAuthData(id, email, login);
-                authAPI.getAuthProfile(id)
-                    .then(data => {
+                authAPI.getAuthProfile(id).then(data => {
                         this.props.setAuthUserProfile(data);
                     })
             }
