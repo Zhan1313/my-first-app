@@ -8,7 +8,6 @@ import {
     setUsers,
     unfollow
 } from "../../Redux/users-reducer";
-import axios from "axios";
 import Users from "./Users";
 import Preloader from "../Common/Preloader/Preloader";
 import {getUsers} from "../../API/api";
