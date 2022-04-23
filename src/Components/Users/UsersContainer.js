@@ -15,11 +15,11 @@ import {getUsers} from "../../API/api";
 class UsersContainer extends React.Component {
 
     componentDidMount() {
-        this.props.setIsFetching(true)
+        this.props.setIsFetching(true);
         getUsers(this.props.currentPage, this.props.pageSize)
-            .then(response => {
-                this.props.setUsers(response.data.items);
-                this.props.setTotalUsersCount(response.data.totalCount);
+            .then(data => {
+                this.props.setUsers(data.items);
+                this.props.setTotalUsersCount(data.totalCount);
                 this.props.setIsFetching(false);
             });
     }
@@ -28,8 +28,8 @@ class UsersContainer extends React.Component {
         this.props.setIsFetching(true);
         this.props.setCurrentPage(page);
         getUsers(page, this.props.pageSize)
-            .then(response => {
-                this.props.setUsers(response.data.items);
+            .then(data => {
+                this.props.setUsers(data.items);
                 this.props.setIsFetching(false);
             });
     }
