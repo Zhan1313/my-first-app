@@ -14,8 +14,8 @@ const Users = (props) => {
                                              followed={user.followed} name={user.name}
                                              status={user.status} location={user.location}
                                              follow={props.follow} unfollow={props.unfollow}
-                                             setFollowingInProgress={this.props.setFollowingInProgress}
-                                             followingInProgress={this.props.followingInProgress}/>);
+                                             setFollowingInProgress={props.setFollowingInProgress}
+                                             followingInProgress={props.followingInProgress}/>);
     return (
         <div>
             <div>
