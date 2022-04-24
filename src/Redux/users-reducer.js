@@ -72,6 +72,7 @@ export const setUsers = (users) => ({type: SET_USERS, users});
 export const setCurrentPage = (page) => ({type: SET_CURRENT_PAGE, page});
 export const setTotalUsersCount = (totalUsersCount) => ({type: SET_TOTAL_USERS_COUNT, totalUsersCount});
 export const setIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching});
+export const setFollowingInProgress = (isFetching) => ({type: TOGGLE_FOLLOWING_IN_PROGRESS, isFetching});
 
 export default usersReducer;
 
