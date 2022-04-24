@@ -1,12 +1,8 @@
 import React from "react";
 import {connect} from "react-redux";
 import {
-    follow,
-    setCurrentPage,
-    setIsFetching,
-    setTotalUsersCount,
-    setUsers,
-    unfollow
+    follow,setCurrentPage, setFollowingInProgress,
+    setIsFetching, setTotalUsersCount, setUsers, unfollow
 } from "../../Redux/users-reducer";
 import Users from "./Users";
 import Preloader from "../Common/Preloader/Preloader";
@@ -38,7 +34,9 @@ class UsersContainer extends React.Component {
                 {this.props.isFetching ? <Preloader/> : null}
                 <Users totalUsersCount={this.props.totalUsersCount} pageSize={this.props.pageSize}
                        users={this.props.users} follow={this.props.follow} unfollow={this.props.unfollow}
-                       onPageChanged={this.onPageChanged} currentPage={this.props.currentPage}/>
+                       onPageChanged={this.onPageChanged} currentPage={this.props.currentPage}
+                       setFollowingInProgress={this.props.setFollowingInProgress}
+                       followingInProgress={this.props.followingInProgress}/>
             </>
         )
     }
@@ -50,9 +48,13 @@ const mapStateToProps = (state) => {
         pageSize: state.usersPage.pageSize,
         totalUsersCount: state.usersPage.totalUsersCount,
         currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching
+        isFetching: state.usersPage.isFetching,
+        followingInProgress: state.usersPage.followingInProgress
     }
 }
+export default connect(mapStateToProps, {
+    follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, setIsFetching, setFollowingInProgress })(UsersContainer);
+
 /*const mapDispatchToProps = (dispatch) => {
     return {
         follow: (userId) => {
@@ -75,11 +77,3 @@ const mapStateToProps = (state) => {
         }
     }
 }  */
-
-export default connect(mapStateToProps, {
-    follow,
-    unfollow,
-    setUsers,
-    setCurrentPage,
-    setTotalUsersCount,
-    setIsFetching })(UsersContainer);

@@ -1,6 +1,7 @@
 import React from "react";
 import User from "./User";
 import styles from "./User.module.css";
+import {setFollowingInProgress} from "../../Redux/users-reducer";
 
 const Users = (props) => {
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
@@ -12,7 +13,9 @@ const Users = (props) => {
     let user = props.users.map(user => <User key={user.id} userId={user.id} photos={user.photos.small}
                                              followed={user.followed} name={user.name}
                                              status={user.status} location={user.location}
-                                             follow={props.follow} unfollow={props.unfollow}/>);
+                                             follow={props.follow} unfollow={props.unfollow}
+                                             setFollowingInProgress={this.props.setFollowingInProgress}
+                                             followingInProgress={this.props.followingInProgress}/>);
     return (
         <div>
             <div>
