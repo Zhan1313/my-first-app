@@ -3,7 +3,7 @@ import styles from './User.module.css';
 import avatarPicture from '../../Assets/images/avatarPicture.png';
 import {NavLink} from "react-router-dom";
 import axios from "axios";
-import {followUnfollowAPI} from "../../API/api";
+import {followUnfollowAPI, usersAPI} from "../../API/api";
 
 const User = (props) => {
     return (
@@ -18,7 +18,7 @@ const User = (props) => {
                     {
                         props.followed ? <button disabled={props.followingInProgress.some(id => id === props.userId)} onClick={() => {
                                 props.setFollowingInProgress(true, props.userId);
-                                followUnfollowAPI.unfollow(props.userId).then(data => {
+                                usersAPI.unfollow(props.userId).then(data => {
                                     if (data.resultCode === 0) {
                                         props.unfollow(props.userId)
                                     }
@@ -27,7 +27,7 @@ const User = (props) => {
                             }}>Unfollow</button>
                             : <button disabled={props.followingInProgress.some(id => id === props.userId)} onClick={() => {
                                 props.setFollowingInProgress(true, props.userId);
-                                followUnfollowAPI.follow(props.userId).then(data => {
+                                usersAPI.follow(props.userId).then(data => {
                                     if (data.resultCode === 0) {
                                         props.follow(props.userId)
                                     }
