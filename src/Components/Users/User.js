@@ -2,8 +2,7 @@ import React from "react";
 import styles from './User.module.css';
 import avatarPicture from '../../Assets/images/avatarPicture.png';
 import {NavLink} from "react-router-dom";
-import axios from "axios";
-import {followUnfollowAPI, usersAPI} from "../../API/api";
+import {usersAPI} from "../../API/api";
 
 const User = (props) => {
     return (
