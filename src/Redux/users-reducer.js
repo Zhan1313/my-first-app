@@ -82,6 +82,7 @@ export const setFollowingInProgress = (isFetching, userId) => ({type: TOGGLE_FOL
 export const getUsers = (currentPage, pageSize) => {
     return (dispatch) => {
         dispatch(setIsFetching(true));
+        dispatch(setCurrentPage(currentPage));
         usersAPI.getUsers(currentPage, pageSize).then(data => {
             dispatch(setUsers(data.items));
             dispatch(setTotalUsersCount(data.totalCount));
