@@ -101,6 +101,17 @@ export const unfollow = (userId) => {
         });
     }
 }
+export const follow = (userId) => {
+    return (dispatch) => {
+        dispatch(setFollowingInProgress(true, userId));
+        usersAPI.follow(userId).then(data => {
+            if (data.resultCode === 0) {
+                dispatch(followSuccess(userId));
+            }
+            dispatch(setFollowingInProgress(false, userId));
+        });
+    }
+}
 
 
 
