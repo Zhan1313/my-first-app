@@ -113,8 +113,5 @@ export const follow = (userId) => {
     }
 }
 
-
-
-
 export default usersReducer;
 
