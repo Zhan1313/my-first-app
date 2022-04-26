@@ -6,7 +6,6 @@ import {
 } from "../../Redux/users-reducer";
 import Users from "./Users";
 import Preloader from "../Common/Preloader/Preloader";
-import {usersAPI} from "../../API/api";
 
 class UsersContainer extends React.Component {
 
@@ -15,12 +14,7 @@ class UsersContainer extends React.Component {
     }
 
     onPageChanged = (page) => {
-        this.props.setIsFetching(true);
-        this.props.setCurrentPage(page);
-        usersAPI.getUsers(page, this.props.pageSize).then(data => {
-                this.props.setUsers(data.items);
-                this.props.setIsFetching(false);
-            });
+        this.props.getUsers(page, this.props.pageSize)
     }
 
     render() {
