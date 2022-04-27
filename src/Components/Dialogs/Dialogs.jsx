@@ -5,7 +5,7 @@ import DialogMessage from "./DialogMessage/DialogMessage";
 import {Redirect} from "react-router-dom";
 
 const Dialogs = ({dialogItems, dialogMessages, onNewDialogMessageChange,
-                     onSendNewDialogsMessage, newDialogMessageText, isAuth}) => {
+                     onSendNewDialogsMessage, newDialogMessageText}) => {
     let dialogsItems = dialogItems.map(el => <DialogItem name={el.name} id={el.id}/>)
     let dialogsMessages = dialogMessages.map(el => <DialogMessage message={el.message}/>)
 
@@ -16,7 +16,6 @@ const Dialogs = ({dialogItems, dialogMessages, onNewDialogMessageChange,
         let messageText = e.target.value;
         onNewDialogMessageChange(messageText);
     }
-    if (!isAuth) return <Redirect to={'/login'}/>
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>

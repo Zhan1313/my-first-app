@@ -22,15 +22,10 @@ let mapStateToProps = (state) => {
         profile: state.profilePage.profile,
     }
 }
-let mapStateToPropsForRedirect = (state) => {
-    return {
-        isAuth: state.auth.isAuth
-    }
-}
+
 let WithUrlDataContainerComponent = withRouter(ProfileContainer);
 
 let WithAuthRedirectComponent = withAuthRedirect(WithUrlDataContainerComponent);
-let ConnectedWithAuthRedirectComponent = connect(mapStateToPropsForRedirect)(WithAuthRedirectComponent);
 
-export default connect(mapStateToProps, {getUserProfile})(ConnectedWithAuthRedirectComponent);
+export default connect(mapStateToProps, {getUserProfile})(WithAuthRedirectComponent);
 
