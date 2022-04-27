@@ -30,6 +30,7 @@ let mapStateToPropsForRedirect = (state) => {
 let WithUrlDataContainerComponent = withRouter(ProfileContainer);
 
 let WithAuthRedirectComponent = withAuthRedirect(WithUrlDataContainerComponent);
+let ConnectedWithAuthRedirectComponent = connect(mapStateToPropsForRedirect)(WithAuthRedirectComponent);
 
-export default connect(mapStateToProps, {getUserProfile})(WithAuthRedirectComponent);
+export default connect(mapStateToProps, {getUserProfile})(ConnectedWithAuthRedirectComponent);
 
