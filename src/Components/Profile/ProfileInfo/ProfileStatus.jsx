@@ -1,15 +1,20 @@
 import React from "react";
+import s from './ProfileStatus.module.css'
 
 class ProfileStatus extends React.Component {
 
+    state = {
+        editMode: true
+    }
+
     render() {
         return (
-            <div>
+            <div className={s.statusBlock}>
                 <div>
-                    <span>{this.props.status}</span>
+                    {!this.state.editMode && <span>{this.props.status}</span>}
                 </div>
                 <div>
-                    <input />
+                    {this.state.editMode && <input/>}
                 </div>
             </div>
         )
