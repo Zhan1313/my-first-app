@@ -17,12 +17,16 @@ class ProfileStatus extends React.Component {
     render() {
         return (
             <div className={s.statusBlock}>
-                <div className={s.status}>
-                    {!this.state.editMode && <span onDoubleClick={this.activateEditMode}>{this.props.status}</span>}
-                </div>
-                <div>
-                    {this.state.editMode && <input autoFocus={true} onBlur={this.deactivateEditMode}/>}
-                </div>
+                {!this.state.editMode &&
+                    <div className={s.status}>
+                        <span onDoubleClick={this.activateEditMode}>{this.props.status}</span>
+                    </div>
+                }
+                {this.state.editMode &&
+                    <div>
+                        <input autoFocus={true} onBlur={this.deactivateEditMode}/>
+                    </div>
+                }
             </div>
         )
     }

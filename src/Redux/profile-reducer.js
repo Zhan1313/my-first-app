@@ -60,8 +60,14 @@ export const getUserProfile = (userId) => (dispatch) => {
 }
 export const getUserStatus = (userId) => (dispatch) => {
     profileAPI.getUserStatus(userId).then(data => {
-        debugger
         dispatch(setStatus(data));
+    });
+}
+export const updateStatus = (status) => (dispatch) => {
+    profileAPI.updateStatus(status).then(response => {
+        if (response.resultCode === 0) {
+            dispatch(setStatus(status));
+        }
     });
 }
 
