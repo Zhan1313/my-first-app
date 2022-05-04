@@ -27,6 +27,9 @@ export const authAPI = {
     getAuthProfile(id) {
         return instance.get(`profile/${id}`).then(response => response.data);
     }
+    getAuthProfile(id) {
+        return instance.get(`profile/${id}`).then(response => response.data);
+    }
 }
 
 export const profileAPI = {
