@@ -42,5 +42,16 @@ export const getUserAuthData = () => (dispatch) => {
         }
     });
 }
-
+export const setAuthLogin = (formData) => (dispatch) => {
+    authAPI.authLogin(formData).then(data => {
+        if (data.resultCode === 0) {
+            authAPI.getUserAuthData().then(data => {
+                if (data.resultCode === 0) {
+                    let {id, email, login} = data.data;
+                    dispatch(setUserAuthData(id, email, login));
+                }
+            });
+        }
+    })
+}
 export default authReducer;

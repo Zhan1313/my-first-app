@@ -10,6 +10,7 @@ import UsersContainer from "./Components/Users/UsersContainer";
 import ProfileContainer from "./Components/Profile/ProfileContainer";
 import HeaderContainer from "./Components/Header/HeaderContainer";
 import Login from "./Components/Login/Login";
+import LoginContainer from "./Components/Login/Login";
 
 const App = () => {
     return (
@@ -26,7 +27,7 @@ const App = () => {
                 <Route path='/music' render={() => <Music/>}/>
                 <Route path='/stories' render={ () => <Stories/>}/>
                 <Route path='/settings' render={ () => <Settings/>}/>
-                <Route path='/login' render={ () => <Login />}/>
+                <Route path='/login' render={ () => <LoginContainer />}/>
 
             </div>
         </div>
