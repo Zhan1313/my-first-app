@@ -28,8 +28,8 @@ const Dialogs = ({
             </div>
             <div className={s.dialogsMessages}>
                 {dialogsMessages}
+                <DialogsReduxForm onSubmit={onSubmit}/>
             </div>
-            <DialogsReduxForm onSubmit={onSubmit}/>
         </div>
     )
 }
