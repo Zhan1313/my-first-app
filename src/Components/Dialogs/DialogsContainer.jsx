@@ -13,8 +13,8 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-        onSendNewDialogsMessage: () => {
-            dispatch(sendDialogsMessageActionCreator())
+        onSendNewDialogsMessage: (formData) => {
+            dispatch(sendDialogsMessageActionCreator(formData))
         },
         onNewDialogMessageChange: (messageText) => {
             dispatch(updateNewDialogMessageTextActionCreator(messageText));

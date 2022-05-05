@@ -19,7 +19,7 @@ const Dialogs = ({
         onNewDialogMessageChange(messageText);
     }
     let onSubmit = (formData) => {
-        console.log(formData);
+        onSendNewDialogsMessage(formData);
     }
     return (
         <div className={s.dialogs}>

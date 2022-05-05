@@ -22,7 +22,7 @@ const dialogsReducer = (state = initialState, action) => {
         case SEND_DIALOGS_MESSAGE:
             let newDialogMessage = {
                 id: 5,
-                message: state.newDialogsMessageText
+                message: action.formData.messageText
             };
             return {
                 ...state,
@@ -39,7 +39,7 @@ const dialogsReducer = (state = initialState, action) => {
     }
 }
 
-export const sendDialogsMessageActionCreator = () => ({type: SEND_DIALOGS_MESSAGE});
+export const sendDialogsMessageActionCreator = (formData) => ({type: SEND_DIALOGS_MESSAGE, formData});
 export const updateNewDialogMessageTextActionCreator = (text) =>
     ({type: UPDATE_NEW_DIALOGS_MESSAGE_TEXT, newMessageText :text});
 
