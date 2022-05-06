@@ -1,4 +1,4 @@
-import {sendDialogsMessageActionCreator, updateNewDialogMessageTextActionCreator} from "../../Redux/dialogs-reducer";
+import {sendDialogsMessageActionCreator} from "../../Redux/dialogs-reducer";
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
 import {withAuthRedirect} from "../../HOC/AuthRedirect";
@@ -15,9 +15,6 @@ const mapDispatchToProps = (dispatch) => {
     return {
         onSendNewDialogsMessage: (formData) => {
             dispatch(sendDialogsMessageActionCreator(formData))
-        },
-        onNewDialogMessageChange: (messageText) => {
-            dispatch(updateNewDialogMessageTextActionCreator(messageText));
         }
     }
 }

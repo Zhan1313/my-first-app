@@ -1,5 +1,4 @@
 const SEND_DIALOGS_MESSAGE = 'SEND_DIALOGS_MESSAGE';
-const UPDATE_NEW_DIALOGS_MESSAGE_TEXT = 'UPDATE_NEW_DIALOGS_MESSAGE_TEXT';
 
 let initialState = {
     dialogItems: [
@@ -29,18 +28,11 @@ const dialogsReducer = (state = initialState, action) => {
                 dialogMessages: [...state.dialogMessages, newDialogMessage],
                 newDialogsMessageText: ''
             };
-        case UPDATE_NEW_DIALOGS_MESSAGE_TEXT:
-            return {
-                ...state,
-                newDialogsMessageText: action.newMessageText
-            };
         default:
             return state;
     }
 }
 
 export const sendDialogsMessageActionCreator = (formData) => ({type: SEND_DIALOGS_MESSAGE, formData});
-export const updateNewDialogMessageTextActionCreator = (text) =>
-    ({type: UPDATE_NEW_DIALOGS_MESSAGE_TEXT, newMessageText :text});
 
 export default dialogsReducer;

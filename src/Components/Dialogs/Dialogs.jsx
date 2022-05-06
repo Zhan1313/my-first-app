@@ -4,21 +4,11 @@ import DialogItem from "./DialogItem/DialogItem";
 import DialogMessage from "./DialogMessage/DialogMessage";
 import {Field, reduxForm} from "redux-form";
 
-const Dialogs = ({
-                     dialogItems, dialogMessages, onNewDialogMessageChange,
-                     onSendNewDialogsMessage, newDialogMessageText
-                 }) => {
+const Dialogs = ({dialogItems, dialogMessages, onSendNewDialogsMessage}) => {
     let dialogsItems = dialogItems.map(el => <DialogItem name={el.name} id={el.id}/>)
     let dialogsMessages = dialogMessages.map(el => <DialogMessage message={el.message}/>)
 
-    let onSendNewDialogsMessageClick = () => {
-        onSendNewDialogsMessage();
-    }
-    let onNewDialogMessageChangeClick = (e) => {
-        let messageText = e.target.value;
-        onNewDialogMessageChange(messageText);
-    }
-    let onSubmit = (formData) => {
+    let sendDialogsMessage = (formData) => {
         onSendNewDialogsMessage(formData);
     }
     return (
@@ -28,12 +18,12 @@ const Dialogs = ({
             </div>
             <div className={s.dialogsMessages}>
                 {dialogsMessages}
-                <DialogsReduxForm onSubmit={onSubmit}/>
+                <AddDialogsMessageForm onSubmit={sendDialogsMessage}/>
             </div>
         </div>
     )
 }
-const DialogsForm = (props) => {
+const DialogsMessageForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
@@ -45,5 +35,5 @@ const DialogsForm = (props) => {
         </form>
     )
 }
-const DialogsReduxForm = reduxForm({form: 'message'})(DialogsForm);
+const AddDialogsMessageForm = reduxForm({form: 'dialogsMessageForm'})(DialogsMessageForm);
 export default Dialogs;
