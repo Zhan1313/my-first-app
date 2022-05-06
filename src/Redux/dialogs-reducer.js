@@ -13,7 +13,6 @@ let initialState = {
         {id: 3, message: 'Where are u mate?'},
         {id: 4, message: 'Nice to see ya here!'}
     ],
-    newDialogsMessageText: ''
 };
 
 const dialogsReducer = (state = initialState, action) => {
