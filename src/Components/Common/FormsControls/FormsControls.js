@@ -12,3 +12,14 @@ export const Textarea = ({input, meta, ...props}) => {
         </div>
     )
 }
+export const Input = ({input, meta, ...props}) => {
+    let hasError = meta.touched && meta.error;
+    return (
+        <div>
+            <div>
+                <input {...input} {...props} className={hasError && styles.error}/>
+            </div>
+            {hasError && <span className={styles.errorSpan}>{meta.error}</span>}
+        </div>
+    )
+}
