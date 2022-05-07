@@ -16,8 +16,7 @@ const authReducer = (state = initialState, action) => {
         case SET_USER_AUTH_DATA:
             return {
                 ...state,
-                ...action.data,
-                isAuth: true
+                ...action.payload
             }
         case SET_AUTH_USER_PROFILE:
             return {
@@ -29,29 +28,31 @@ const authReducer = (state = initialState, action) => {
     }
 }
 
-const setUserAuthData = (userId, email, login) => ({type: SET_USER_AUTH_DATA, data: {userId, email, login}});
+const setUserAuthData = (userId, email, login, isAuth) => ({type: SET_USER_AUTH_DATA, payload: {userId, email, login, isAuth}});
 const setAuthUserProfile = (profile) => ({type: SET_AUTH_USER_PROFILE, profile});
 export const getUserAuthData = () => (dispatch) => {
-    authAPI.getUserAuthData().then(data => {
+    authAPI.me().then(data => {
         if (data.resultCode === 0) {
             let {id, email, login} = data.data;
-            dispatch(setUserAuthData(id, email, login));
+            dispatch(setUserAuthData(id, email, login, true));
             authAPI.getAuthProfile(id).then(data => {
                 dispatch(setAuthUserProfile(data));
-            })
-        }
+            });
+        };
     });
-}
-export const setAuthLogin = (formData) => (dispatch) => {
+};
+export const login = (formData) => (dispatch) => {
     authAPI.authLogin(formData).then(data => {
         if (data.resultCode === 0) {
-            authAPI.getUserAuthData().then(data => {
-                if (data.resultCode === 0) {
-                    let {id, email, login} = data.data;
-                    dispatch(setUserAuthData(id, email, login));
-                }
-            });
-        }
-    })
-}
+            dispatch(getUserAuthData());
+        };
+    });
+};
+export const logout = () => (dispatch) => {
+    authAPI.authLogout().then(data => {
+        if (data.resultCode === 0) {
+            dispatch(setUserAuthData(null, null, null, false));
+        };
+    });
+};
 export default authReducer;

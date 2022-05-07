@@ -1,9 +1,9 @@
 import React from "react";
 import {Field, reduxForm} from "redux-form";
 import {connect} from "react-redux";
-import {setAuthLogin} from "../../Redux/auth-reducer";
+import {login, logout, setAuthLogin} from "../../Redux/auth-reducer";
 import {Input} from "../Common/FormsControls/FormsControls";
-import {maxLengthCreator, required} from "../../Utils/validators/validators";
+import {required} from "../../Utils/validators/validators";
 
 const LoginForm = (props) => {
     return (
@@ -39,6 +39,4 @@ const Login = (props) => {
     )
 }
 
-const mapStateToProps = (state) => ({a: 15})
-const LoginContainer = connect(mapStateToProps, {setAuthLogin})(Login);
-export default LoginContainer;
+export default connect(null, {login, logout})(Login);
