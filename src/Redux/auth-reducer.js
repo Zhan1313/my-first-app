@@ -29,7 +29,10 @@ const authReducer = (state = initialState, action) => {
     }
 }
 
-const setUserAuthData = (userId, email, login, isAuth) => ({type: SET_USER_AUTH_DATA, payload: {userId, email, login, isAuth}});
+const setUserAuthData = (userId, email, login, isAuth) => ({
+    type: SET_USER_AUTH_DATA,
+    payload: {userId, email, login, isAuth}
+});
 const setAuthUserProfile = (profile) => ({type: SET_AUTH_USER_PROFILE, profile});
 export const getUserAuthData = () => (dispatch) => {
     authAPI.me().then(data => {
@@ -39,16 +42,16 @@ export const getUserAuthData = () => (dispatch) => {
             authAPI.getAuthProfile(id).then(data => {
                 dispatch(setAuthUserProfile(data));
             });
-        };
+        }
     });
 };
 export const login = (formData) => (dispatch) => {
-    let action = stopSubmit('login', {email: 'Email is incorrect'})
-     dispatch(action)
-    return
     authAPI.authLogin(formData).then(data => {
         if (data.resultCode === 0) {
             dispatch(getUserAuthData());
+        } else {
+            let action = stopSubmit('login', {email: 'Email is incorrect'})
+            dispatch(action);
         }
     });
 };
@@ -56,7 +59,7 @@ export const logout = () => (dispatch) => {
     authAPI.authLogout().then(data => {
         if (data.resultCode === 0) {
             dispatch(setUserAuthData(null, null, null, false));
-        };
+        }
     });
 };
 export default authReducer;
