@@ -8,17 +8,17 @@ const User = (props) => {
         <div>
             <span>
                 <div>
-                    <NavLink to={'profile/' + props.userId}>
-                        <img src={props.photos != null ? props.photos : avatarPicture} className={styles.avatarPhoto}/>
+                    <NavLink to={'profile/' + props.user.id}>
+                        <img src={props.user.photos.small != null ? props.user.photos.small : avatarPicture} className={styles.avatarPhoto}/>
                     </NavLink>
                 </div>
                 <div>
                     {
-                        props.followed ? <button disabled={props.followingInProgress.some(id => id === props.userId)} onClick={() => {
-                                props.unfollow(props.userId)
+                        props.user.followed ? <button disabled={props.followingInProgress.some(id => id === props.user.id)} onClick={() => {
+                                props.unfollow(props.user.id)
                             }}>Unfollow</button>
-                            : <button disabled={props.followingInProgress.some(id => id === props.userId)} onClick={() => {
-                                props.follow(props.userId)
+                            : <button disabled={props.followingInProgress.some(id => id === props.user.id)} onClick={() => {
+                                props.follow(props.user.id)
                             }}>Follow</button>
                     }
                 </div>
@@ -26,10 +26,10 @@ const User = (props) => {
             <span>
                 <span>
                     <div>
-                        {props.name}
+                        {props.user.name}
                     </div>
                     <div>
-                        {props.status}
+                        {props.user.status}
                     </div>
                 </span>
                 <span>

@@ -1,5 +1,4 @@
 import {usersAPI} from "../API/api";
-import {updateObjectInArray} from "../Utils/object-helpers";
 
 const FOLLOW = 'samurai-network/úsers/FOLLOW';
 const UNFOLLOW = 'samurai-network/úsers/UNFOLLOW';
@@ -23,12 +22,24 @@ const usersReducer = (state = initialState, action) => {
         case FOLLOW:
             return {
                 ...state,
-                users: updateObjectInArray(state.users, 'id', action.userId, {followed: true})
+                /*users: updateObjectInArray(state.users, 'id', action.userId, {followed: true})*/
+                users: state.users.map(user => {
+                    if (user.id === action.userId) {
+                        return {...user, followed: true}
+                    }
+                    return user;
+                })
             };
         case UNFOLLOW:
             return {
                 ...state,
-                users: updateObjectInArray(state.users, 'id', action.userId, {followed: false})
+                /*users: updateObjectInArray(state.users, 'id', action.userId, {followed: false})*/
+                users: state.users.map(user => {
+                    if (user.id === action.userId) {
+                        return {...user, followed: false}
+                    }
+                    return user;
+                })
             };
         case SET_USERS:
             return {
