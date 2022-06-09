@@ -1,8 +1,8 @@
 import {authAPI} from "../API/api";
 import {stopSubmit} from "redux-form";
 
-const SET_USER_AUTH_DATA = 'SET_USER_AUTH_DATA';
-const SET_AUTH_USER_PROFILE = 'SET_AUTH_USER_PROFILE';
+const SET_USER_AUTH_DATA = 'samurai-network/auth/SET_USER_AUTH_DATA';
+const SET_AUTH_USER_PROFILE = 'samurai-network/auth/SET_AUTH_USER_PROFILE';
 
 let initialState = {
     login: null,
@@ -28,38 +28,34 @@ const authReducer = (state = initialState, action) => {
             return state;
     }
 }
-
 const setUserAuthData = (userId, email, login, isAuth) => ({
     type: SET_USER_AUTH_DATA,
     payload: {userId, email, login, isAuth}
 });
 const setAuthUserProfile = (profile) => ({type: SET_AUTH_USER_PROFILE, profile});
-export const getUserAuthData = () => (dispatch) => {
-    authAPI.me().then(data => {
-        if (data.resultCode === 0) {
-            let {id, email, login} = data.data;
-            dispatch(setUserAuthData(id, email, login, true));
-            authAPI.getAuthProfile(id).then(data => {
-                dispatch(setAuthUserProfile(data));
-            });
-        }
-    });
+export const getUserAuthData = () => async (dispatch) => {
+    let data = await authAPI.me();
+    if (data.resultCode === 0) {
+        let {id, email, login} = data.data;
+        dispatch(setUserAuthData(id, email, login, true));
+        authAPI.getAuthProfile(id).then(data => {
+            dispatch(setAuthUserProfile(data));
+        });
+    }
 };
-export const login = (formData) => (dispatch) => {
-    authAPI.authLogin(formData).then(data => {
-        if (data.resultCode === 0) {
-            dispatch(getUserAuthData());
-        } else {
-            let action = stopSubmit('login', {email: 'Email is incorrect'})
-            dispatch(action);
-        }
-    });
+export const login = (formData) => async (dispatch) => {
+    let data = await authAPI.authLogin(formData);
+    if (data.resultCode === 0) {
+        dispatch(getUserAuthData());
+    } else {
+        let action = stopSubmit('login', {email: 'Email is incorrect'})
+        dispatch(action);
+    }
 };
-export const logout = () => (dispatch) => {
-    authAPI.authLogout().then(data => {
-        if (data.resultCode === 0) {
-            dispatch(setUserAuthData(null, null, null, false));
-        }
-    });
+export const logout = () => async (dispatch) => {
+    let data = await authAPI.authLogout();
+    if (data.resultCode === 0) {
+        dispatch(setUserAuthData(null, null, null, false));
+    }
 };
 export default authReducer;

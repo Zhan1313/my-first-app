@@ -30,3 +30,11 @@ test('length of postsData should be decreased', () => {
     // 3. expectation
     expect(newState.postsData.length).toBe(1);
 });
+test('length of postsData should not be decreased if postId is incorrect', () => {
+    // 1. test data
+    let action = deletePost(1000);
+    // 2. action
+    let newState = profileReducer(state, action);
+    // 3. expectation
+    expect(newState.postsData.length).toBe(2);
+});
