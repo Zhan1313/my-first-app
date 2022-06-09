@@ -1,4 +1,4 @@
-const SEND_DIALOGS_MESSAGE = 'SEND_DIALOGS_MESSAGE';
+const SEND_DIALOGS_MESSAGE = 'samurai-network/dialogs/SEND_DIALOGS_MESSAGE';
 
 let initialState = {
     dialogItems: [

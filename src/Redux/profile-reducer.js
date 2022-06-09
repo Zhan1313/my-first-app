@@ -1,10 +1,10 @@
 import {profileAPI} from "../API/api";
 
-const ADD_POST = 'ADD_POST';
-const DELETE_POST = 'DELETE_POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
-const SET_USER_PROFILE = 'SET_USER_PROFILE';
-const SET_STATUS = 'SET_STATUS';
+const ADD_POST = 'samurai-network/profile/ADD_POST';
+const DELETE_POST = 'samurai-network/profile/DELETE_POST';
+const UPDATE_NEW_POST_TEXT = 'samurai-network/profile/UPDATE_NEW_POST_TEXT';
+const SET_USER_PROFILE = 'samurai-network/profile/SET_USER_PROFILE';
+const SET_STATUS = 'samurai-network/profile/SET_STATUS';
 
 let initialState = {
     postsData: [
@@ -60,23 +60,20 @@ export const updateNewPostTextActionCreator = (text) => ({type: UPDATE_NEW_POST_
 const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile});
 const setStatus = (status) => ({type: SET_STATUS, status});
 
-export const getUserProfile = (userId) => (dispatch) => {
-    profileAPI.getUserProfile(userId).then(data => {
-        dispatch(setUserProfile(data));
-    });
+export const getUserProfile = (userId) => async (dispatch) => {
+    let data = await profileAPI.getUserProfile(userId);
+    dispatch(setUserProfile(data));
 }
-export const getUserStatus = (userId) => (dispatch) => {
-    profileAPI.getUserStatus(userId).then(data => {
-        dispatch(setStatus(data));
-    });
+export const getUserStatus = (userId) => async (dispatch) => {
+    let data = await profileAPI.getUserStatus(userId);
+    dispatch(setStatus(data));
 }
-export const updateStatus = (status) => (dispatch) => {
-    profileAPI.updateStatus(status).then(response => {
-        if (response.resultCode === 0) {
-            debugger;
-            dispatch(setStatus(status));
-        }
-    });
+export const updateStatus = (status) => async (dispatch) => {
+    let response = await profileAPI.updateStatus(status);
+    if (response.resultCode === 0) {
+        debugger;
+        dispatch(setStatus(status));
+    }
 }
 
 export default profileReducer;
