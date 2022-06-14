@@ -21,9 +21,10 @@ describe("ProfileStatus component", () => {
     });
     test(`after creation <span> must be displayed with status from props`, () => {
         const component = create(<ProfileStatus status="It-kamasutra.com" />);
+        const instance = component.getInstance();
         const root = component.root;
         const span = root.findByType('span')
-        expect(span.children[0]).toBe("It-kamasutra.com");
+        expect(span.children[0]).toBe(instance.props.status);
     });
 
     test(`after double clicking on the <span> the <input> must be displayed instead of span`, () => {
@@ -42,5 +43,20 @@ describe("ProfileStatus component", () => {
         span.props.onDoubleClick();
         const input = root.findByType('input');
         expect(input.props.value).toBe(instance.state.status);
+    });
+    test(`callback should be called`, () => {
+        const mockCallBack = jest.fn();
+        const component = create(<ProfileStatus status="It-kamasutra.com" updateStatus={mockCallBack}/>);
+        const instance = component.getInstance();
+        instance.deactivateEditMode();
+        expect(mockCallBack.mock.calls.length).toBe(1);
+    });
+    test(`callBack should be called`, () => {
+        const mockCallBack = jest.fn();
+        const component = create(<ProfileStatus status="It-kamasutra.com" updateStatus={mockCallBack}/>);
+        const instance = component.getInstance();
+        instance.deactivateEditMode();
+        mockCallBack();
+        expect(mockCallBack).toBeCalled();
     });
 });
