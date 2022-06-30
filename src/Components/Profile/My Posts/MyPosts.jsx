@@ -25,14 +25,14 @@ const MyPosts = ({postsData,onNewPostChange, addNewPost, newPostText}) => {
     )
 }
 
-let maxLength10 = maxLengthCreator(10);
+let maxLength50 = maxLengthCreator(50);
 
 const PostsForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
                 <Field placeholder={'type post here...'} component={Textarea}
-                       name={'postText'} validate={[required, maxLength10]}/>
+                       name={'postText'} validate={[required, maxLength50]}/>
             </div>
             <div>
                 <button>Add Post</button>
