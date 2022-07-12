@@ -51,7 +51,7 @@ const App = () => {
 
 const SamuraiApp = () => {
     return (
-        <HashRouter basename={process.env.PUBLIC_URL}>
+        <HashRouter>
             <Provider store={store}>
                 <App/>
             </Provider>
